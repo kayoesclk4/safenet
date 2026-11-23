@@ -112,3 +112,4 @@ export default function ModalAuth() {
     </div>
   );
 }
+
