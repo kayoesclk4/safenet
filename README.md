@@ -1,4 +1,4 @@
-# SafeNet Kids – Protótipo Funcional
+# SafeNet Kids – Controle Parental Inteligente (Vite + React)
 
 **Aplicativo de Controle e Monitoramento Inteligente de Redes**  
 Projeto do Curso Técnico em Desenvolvimento de Sistemas  
@@ -7,90 +7,56 @@ Novembro/2026
 
 ---
 
-## Como rodar o protótipo
+## Como rodar o projeto localmente
 
-### Opção 1 – Com Node.js / npm (Recomendado)
 ```bash
+# 1. Instalar dependências (caso necessário)
+npm install
+
+# 2. Iniciar servidor de desenvolvimento Vite
 npm run dev
-# ou
-npm start
 ```
-O servidor iniciará em `http://localhost:3000` e abrirá a página automaticamente no navegador.
+Acesse em: `http://localhost:3000`
 
-### Opção 2 – Abrir direto no navegador
-1. Abra a pasta `SafeNet`
-2. Dê um duplo clique no arquivo `index.html`
-3. O protótipo abrirá no seu navegador padrão
-
-### Opção 3 – Com Python
+Para testar o build de produção localmente:
 ```bash
-python -m http.server 8080
-# Depois acesse: http://localhost:8080
+npm run build
+npm run preview
 ```
-
-### Opção 4 – Publicar na Vercel (Link online para apresentar)
-1. Suba os arquivos para o seu **GitHub**.
-2. Acesse [vercel.com](https://vercel.com) e conecte sua conta.
-3. Clique em **"Add New Project"** e importe o repositório.
-4. O projeto já inclui o `vercel.json` configurado (basta clicar em **Deploy**). Em segundos o protótipo estará acessível pelo celular ou qualquer navegador.
 
 ---
 
-## Perfis de Acesso para Teste
+## Como publicar na Vercel (Pronto para Deploy)
 
-| Perfil | E-mail | Senha | O que acessa |
+1. Suba os arquivos para o seu **GitHub** (`git push origin main`).
+2. Acesse [vercel.com](https://vercel.com) e conecte com seu GitHub.
+3. Clique em **"Add New Project"** e selecione o repositório **safenet**.
+4. O framework detectará automaticamente como **Vite** (Build Command: `vite build`, Output Directory: `dist`).
+5. Clique em **Deploy**. Em menos de 1 minuto o site estará publicado e online para apresentação!
+
+---
+
+## Perfis de Acesso para Apresentação
+
+| Perfil | E-mail | Senha | Páginas acessadas |
 |---|---|---|---|
-| **👨‍💼 Pai (Ricardo)** | `ricardo@email.com` | `123456` | Dashboard, Horários, Gestão de Metas do Filho, Alertas (com aprovação de tempo) e Relatório Semanal com PDF. |
-| **👦 Filho (Guilherme)** | `guilherme@email.com` | `1234` | Minhas Metas (apenas marcar ✓), solicitação de tempo extra e Meu Tempo de Rede. |
+| **👨‍💼 Pai (Ricardo)** | `ricardo@email.com` | `123456` | `/dashboard`, `/horarios`, `/gestao-metas`, `/alertas`, `/relatorio` (com exportação real em PDF). |
+| **👦 Filho (Guilherme)** | `guilherme@email.com` | `1234` | `/crianca` (Minhas Metas & Recompensas), `/tempo-crianca` (Meu Tempo de Rede). |
+
+> 💡 **Dica de apresentação rápida:** Na tela de login há botões de 1 clique para alternar instantaneamente entre Pai e Filho.
 
 ---
 
-## Funcionalidades demonstradas
+## Páginas e Estrutura (Vite + React)
 
-| Tela | O que faz |
-|---|---|
-| **Login** | Seleção rápida em 1 clique entre Pai e Filho, criar conta e recuperação de senha |
-| **Dashboard (Pais)** | Tempo de tela dinâmico com tempo disponível livre, percentual recalculado, gráfico e bloqueio emergencial |
-| **Horários (Pais)** | Perfis de acesso: ativar/desativar, editar faixas de horário e criar novas regras |
-| **Metas do Filho (Pais)** | Os pais cadastram, editam e excluem tarefas diárias para o filho |
-| **Minhas Metas (Filho)** | O Guilherme apenas marca as tarefas cumpridas e solicita tempo extra aos pais |
-| **Meu Tempo (Filho)** | O Guilherme acompanha quanto tempo já usou, seu limite e quanto tempo ainda tem livre |
-| **Alertas (Pais)** | Notificações de bloqueio e aprovação de tempo extra solicitado pelo filho em 1 clique |
-| **Relatório (Pais)** | Resumo semanal, gráfico comparativo e **exportação real em PDF** pronta para download |
-
----
-
-## Tecnologias usadas no protótipo
-
-- **HTML5** – estrutura
-- **CSS3** – layout responsivo e identidade visual
-- **JavaScript (Vanilla)** – interatividade e lógica
-- **Chart.js** – gráficos (categorias e relatório)
-
----
-
-## Arquitetura prevista para a versão completa
-
-```
-┌─────────────────┐     ┌──────────────────────┐
-│  App Mobile     │────▶│  Backend (API)       │
-│  (Flutter /     │     │  Node.js + Firebase  │
-│   React Native) │     └──────────────────────┘
-└────────┬────────┘              │
-         │                       │
-         ▼                       ▼
-┌─────────────────┐     ┌──────────────────────┐
-│  Filtragem      │     │  Banco de dados      │
-│  DNS / VPN Local│     │  (regras, logs,      │
-│  no dispositivo │     │   metas, usuários)   │
-└─────────────────┘     └──────────────────────┘
-```
-
-### Principais componentes reais (versão futura)
-1. **Cliente mobile** – interface para pais e crianças
-2. **Módulo de filtragem** – DNS filtering ou VPN local no dispositivo da criança
-3. **Backend** – sincronização de regras, relatórios e notificações push
-4. **Listas de bloqueio** – atualizadas periodicamente (conteúdo adulto, rastreadores, etc.)
+- `/login` – Seleção rápida de perfil e login com credenciais
+- `/dashboard` – Resumo em tempo real, tempo de tela, alertas, metas e gráfico por categoria
+- `/horarios` – Criação, edição e ativação/desativação de perfis de horário
+- `/gestao-metas` – Painel dos pais para cadastrar e gerenciar metas do filho
+- `/alertas` – Central de alertas com aprovação/recusa de tempo extra com 1 clique
+- `/relatorio` – Relatório semanal com gráfico de barras e download em PDF (html2pdf)
+- `/crianca` – Espaço da criança com checklist de metas e solicitação de tempo extra
+- `/tempo-crianca` – Visão da criança com medidor visual e limites de conexão
 
 ---
 

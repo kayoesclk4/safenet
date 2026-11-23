@@ -1,6 +1,7 @@
 # Dependências e caches
 node_modules/
 .npm/
+dist/
 
 # Logs e arquivos de sistema
 *.log
@@ -11,4 +12,3 @@ ehthumbs.db
 # Configurações de IDEs
 .vscode/
 .idea/
-

@@ -47,17 +47,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ==================== TELAS ==================== */
-.screen {
-  display: none;
-  min-height: 100vh;
-}
-.screen.active {
-  display: flex;
-}
-
 /* ==================== LOGIN ==================== */
-#screen-login {
+.screen-login {
+  min-height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at top left, #1E40AF 0%, #1D4ED8 35%, #0F172A 100%);
@@ -157,6 +150,7 @@ body {
   font-family: inherit;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
 }
 .btn:active {
   transform: scale(0.98);
@@ -202,12 +196,19 @@ body {
   margin-top: 1.5rem;
   font-size: 0.9rem;
 }
-.login-links a {
+.login-links a,
+.login-links button {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
 }
-.login-links a:hover {
+.login-links a:hover,
+.login-links button:hover {
   text-decoration: underline;
 }
 .login-links span {
@@ -215,31 +216,11 @@ body {
   color: var(--border);
 }
 
-.demo-hint {
-  margin-top: 1.5rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  background: var(--bg);
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  border: 1px dashed var(--border);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.demo-hint:hover {
-  background: var(--primary-light);
-  border-color: var(--primary);
-  color: var(--primary-dark);
-}
-
 /* ==================== APP LAYOUT ==================== */
-#screen-app {
-  display: none;
+.screen-app {
+  display: flex;
   position: relative;
   min-height: 100vh;
-}
-#screen-app.active {
-  display: flex;
 }
 
 .sidebar {
@@ -297,9 +278,6 @@ body {
   gap: 0.35rem;
   width: 100%;
 }
-.nav-role-group.hidden {
-  display: none !important;
-}
 
 .nav-item {
   display: flex;
@@ -319,6 +297,7 @@ body {
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  text-decoration: none;
 }
 .nav-item:hover {
   background: var(--bg);
@@ -452,10 +431,6 @@ body {
 }
 
 .page {
-  display: none;
-}
-.page.active {
-  display: block;
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -995,7 +970,7 @@ body {
 
 /* ==================== MODAIS ==================== */
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.55);
@@ -1004,9 +979,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-}
-.modal.active {
-  display: flex;
   animation: fadeIn 0.2s ease;
 }
 
@@ -1406,12 +1378,6 @@ body {
     margin-left: 0 !important;
     padding: 0 !important;
     max-width: 100% !important;
-  }
-  .page {
-    display: none !important;
-  }
-  #page-relatorio {
-    display: block !important;
   }
   .card {
     box-shadow: none !important;
