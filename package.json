@@ -1,0 +1,13 @@
+{
+  "name": "safenet-kids",
+  "version": "1.0.0",
+  "description": "SafeNet Kids – Controle Parental Inteligente",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static site ready for Vercel'"
+  },
+  "keywords": ["parental-control", "dashboard", "safenet", "kids"],
+  "author": "SafeNet Kids Team",
+  "license": "ISC"
+}
